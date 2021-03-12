@@ -1,0 +1,42 @@
+{
+  "type": "object",
+  "description": "Элемент карточки галереи с заголовком, ссылкой и описанием",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "Тип элемента отдельной карточки",
+      "enum": [
+        "gallery_search_content_item"
+      ]
+    },
+    "title_text": {
+      "$ref": "../../Common/text_view.json"
+    },
+    "image": {
+      "$ref": "../../Common/image_address.json"
+    },
+    "link_text": {
+      "$ref": "../../Common/text_view.json"
+    },
+    "description_text": {
+      "$ref": "../../Common/text_view.json"
+    },
+    "paddings": {
+      "description": "Отступы для ячейки",
+      "$ref": "../../Common/paddings.json"
+    },
+    "actions": {
+      "$ref": "../../Actions/actions.json"
+    },
+    "width": {
+      "$ref": "../../Common/content_width.json",
+      "default": "large"
+    }
+  },
+  "required": [
+    "type",
+    "title_text",
+    "link_text",
+    "actions"
+  ]
+}

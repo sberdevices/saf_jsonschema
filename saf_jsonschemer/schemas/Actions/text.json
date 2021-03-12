@@ -1,0 +1,26 @@
+{
+  "type": "object",
+  "description": "Действие, которое обозначает отправку сообщения от имени пользователя в чат с ассистентом.",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "Тип действия.",
+      "enum": [
+        "text"
+      ]
+    },
+    "text": {
+      "type": "string",
+      "description": "Текст сообщения от имени пользователя."
+    },
+    "should_send_to_backend": {
+      "type": "boolean",
+      "description": "true, если сообщение нужно отобразить в чате и отправить в бекэнд, false если сообщение нужно только отобразить в чате, и не отправлять на бекэнд",
+      "default": "true"
+    }
+  },
+  "required": [
+    "type",
+    "text"
+  ]
+}

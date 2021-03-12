@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "Тип ячейки",
+      "enum": [
+        "image_cell_view"
+      ]
+    },
+    "content": {
+      "$ref": "../../Common/image_view.json"
+    },
+    "paddings": {
+      "$ref": "../../Common/paddings.json"
+    }
+  },
+  "required": [
+    "type",
+    "content"
+  ]
+}

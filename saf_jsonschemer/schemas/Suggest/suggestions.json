@@ -1,0 +1,31 @@
+{
+  "type": "object",
+  "description": "Саджесты",
+  "definitions": {
+    "button": {
+      "type": "object",
+      "description": "Описание одной кнопки саджеста. Если пришел объект actions, то action игнорируется",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Текст который будет отображен на кнопке"
+        },
+        "action": {
+          "$ref": "../Actions/action.json"
+        },
+        "actions": {
+          "$ref": "../Actions/actions.json",
+          "minItems": 1
+        }
+      }
+    }
+  },
+  "properties": {
+    "buttons": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/button"
+      }
+    }
+  }
+}

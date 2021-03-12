@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "description": "Угловая скобка. Соответствует UITableViewCell.AccessoryType.disclosureIndicator",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "Тип правого элемента ячейки.",
+      "enum": [
+        "disclosure_right_view"
+      ]
+    },
+    "margins": {
+      "$ref": "../../Common/margins.json"
+    }
+  },
+  "required": [
+    "type"
+  ]
+}

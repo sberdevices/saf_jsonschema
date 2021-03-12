@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "description": "Размер изображения",
+  "definitions": {
+    "dimension": {
+      "type": "string",
+      "description": "Возможные значения размеров изображения.",
+      "enum": [
+        "xsmall",
+        "small",
+        "medium",
+        "large",
+        "xlarge"
+      ]
+    }
+  },
+  "properties": {
+    "width": {
+      "$ref": "#/definitions/dimension"
+    },
+    "height": {
+      "$ref": "#/definitions/dimension"
+    }
+  },
+  "required": [
+    "width",
+    "height"
+  ]
+}

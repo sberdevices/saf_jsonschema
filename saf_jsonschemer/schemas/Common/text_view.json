@@ -1,0 +1,33 @@
+{
+  "type": "object",
+  "description": "Текстовый элемент",
+  "properties": {
+    "text": {
+      "type": "string",
+      "description": "Текст, который нужно отобразить",
+      "minLength": 1
+    },
+    "typeface": {
+      "$ref": "../Styles/typeface.json"
+    },
+    "text_color": {
+      "$ref": "../Styles/type_color.json"
+    },
+    "margins": {
+      "$ref": "margins.json"
+    },
+    "max_lines": {
+      "type": "integer",
+      "description": "Максимальное количество строк. 0 - не ограничено.",
+      "default": 1
+    },
+    "actions": {
+      "$ref": "../Actions/actions.json"
+    }
+  },
+  "required": [
+    "text",
+    "typeface",
+    "text_color"
+  ]
+}

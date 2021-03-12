@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "description": "Действие, которое обозначает обработку диплинка ассистентом или хост-приложением.",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "Тип действия.",
+      "enum": [
+        "deep_link"
+      ]
+    },
+    "deep_link": {
+      "type": "string",
+      "description": "Диплинк, который нужно открыть."
+    }
+  },
+  "required": [
+    "type",
+    "deep_link"
+  ]
+}

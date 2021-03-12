@@ -1,0 +1,10 @@
+{
+  "type": "string",
+  "description": "Гравити ui элемента по вертикали.",
+  "enum": [
+    "top",
+    "center",
+    "bottom"
+  ],
+  "default": "center"
+} 

@@ -1,0 +1,20 @@
+{
+  "type": "object",
+  "description": "Строка карточки погоды на неделю",
+  "properties": {
+    "weekday": {"type": "string"},
+    "date": {"type": "string"},
+    "day": {"type": "string"},
+    "night": {"type": "string"},
+    "icon": {
+      "$ref": "../../Common/icon_view.json"
+    }
+  },
+  "required": [
+    "weekday",
+    "date",
+    "day",
+    "night",
+    "icon"
+  ]
+}

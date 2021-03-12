@@ -1,0 +1,11 @@
+{
+  "type": "string",
+  "description": "Ширина контента в терминах сеток. https://www.figma.com/file/L6AlpyUxFuumKEEbh4ADIh/🤖SD-Styles?node-id=26%3A17 https://www.figma.com/file/c6KZ9jIXTB5zEmyTfA2Akv/Message-Based?node-id=1446%3A0",
+  "enum": [
+    "xsmall",
+    "small",
+    "medium",
+    "large",
+    "resizable"
+  ]
+}

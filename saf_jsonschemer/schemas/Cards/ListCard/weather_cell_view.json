@@ -1,0 +1,26 @@
+{
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "Тип ячейки",
+      "enum": [
+        "weather_cell_view"
+      ]
+    },
+    "content": {
+      "type": "array",
+      "items": {
+        "$ref": "weather_view.json"
+      },
+      "minItems": 1
+    },
+    "paddings": {
+      "$ref": "../../Common/paddings.json"
+    }
+  },
+  "required": [
+    "type",
+    "content"
+  ]
+}

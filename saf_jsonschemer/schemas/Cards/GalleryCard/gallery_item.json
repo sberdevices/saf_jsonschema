@@ -1,0 +1,13 @@
+{
+  "oneOf": [
+    {
+      "$ref": "media_gallery_item.json"
+    },
+    {
+      "$ref": "gallery_search_content_item.json"
+    },
+    {
+      "$ref": "gallery_more_button_item.json"
+    }
+  ]
+}

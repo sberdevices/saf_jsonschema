@@ -1,0 +1,13 @@
+{
+  "oneOf": [
+    {
+      "$ref": "ListCard/list_card.json"
+    },
+    {
+      "$ref": "GalleryCard/gallery_card.json"
+    },
+    {
+	  "$ref": "GridCard/grid_card.json"
+    }
+  ]
+}

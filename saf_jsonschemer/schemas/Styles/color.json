@@ -1,0 +1,20 @@
+{
+  "type": "string",
+  "description": "Цвет фона см https://www.figma.com/file/yaeE0lLDWMBKKLXuDHgq1p/SmartX-Styles?node-id=19%3A15",
+  "enum": [
+    "solid_black",
+    "solid_white",
+    "solid_transparent",
+    "solid_disabled",
+    "solid_brand",
+    "solid_warning",
+    "solid_critical",
+    "solid_action",
+    "liquid_60",
+    "liquid_50",
+    "liquid_40",
+    "liquid_30",
+    "liquid_20",
+    "liquid_10"
+  ]
+}

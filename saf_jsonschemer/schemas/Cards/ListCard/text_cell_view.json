@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "Тип ячейки",
+      "enum": [
+        "text_cell_view"
+      ]
+    },
+    "content": {
+      "$ref": "../../Common/text_view.json"
+    },
+    "divider": {
+      "$ref": "divider_view.json"
+    },
+    "paddings": {
+      "$ref": "../../Common/paddings.json"
+    }
+  },
+  "required": [
+    "type",
+	"content"
+  ]
+}

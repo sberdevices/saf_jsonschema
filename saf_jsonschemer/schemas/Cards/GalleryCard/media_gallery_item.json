@@ -1,0 +1,33 @@
+{
+  "type": "object",
+  "description": "Элемент галереи состоящий из изображения и двух текстовых полей",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "Тип элемента галереи",
+      "enum": [
+        "media_gallery_item"
+      ]
+    },
+    "image": {
+      "$ref": "../../Common/image_view.json"
+    },
+    "top_text": {
+      "$ref": "../../Common/text_view.json"
+    },
+    "bottom_text": {
+      "$ref": "../../Common/text_view.json"
+    },
+    "margins": {
+      "description": "Отступы для контейнера который содержит top_text и bottom_text, но не содержит image",
+      "$ref": "../../Common/margins.json"
+    },
+    "actions": {
+      "$ref": "../../Actions/actions.json"
+    }
+  },
+  "required": [
+    "type",
+    "image"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "Тип ячейки",
+      "enum": [
+        "details_cell_view"
+      ]
+    },
+    "details": {
+      "type": "array",
+      "items": {
+        "$ref": "detail_right_view.json"
+      },
+      "minItems": 1
+    },
+    "paddings": {
+      "$ref": "../../Common/paddings.json"
+    }
+  },
+  "required": [
+    "type",
+    "details"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "type": "object",
+  "description": "Divider/Separator. Тонка полоска, разделяющая ячейки",
+  "properties": {
+    "style": {
+      "type": "string",
+      "description": "Стиль дивайдера.",
+      "enum": [
+        "default",
+        "read_only"
+      ],
+      "default": "default"
+    },
+    "size": {
+      "type": "string",
+      "description": "Возможные размеры сепаратора/дивайдера https://www.figma.com/file/sC1HJg3HRcNjaG3rcd4b3V/Templates?node-id=289%3A3210",
+      "enum": [
+        "d1",
+        "d2",
+        "d3",
+        "d4",
+        "d5"
+      ],
+      "default": "d1"
+    }
+  },
+  "required": [
+    "size",
+    "style"
+  ]
+}

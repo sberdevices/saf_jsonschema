@@ -1,0 +1,30 @@
+{
+  "type": "object",
+  "description": "Кнопка \"Все результаты\" в карточке галереи",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "Тип элемента кнопки всех результатов",
+      "enum": [
+        "gallery_more_button_item"
+      ]
+    },
+    "bottom_text": {
+      "description": "Текст подписи под кнопкой",
+      "$ref": "../../Common/text_view.json"
+    },
+    "icon": {
+      "description": "Иконка кнопки",
+      "$ref": "../../Common/icon_view.json"
+    },
+    "actions": {
+      "$ref": "../../Actions/actions.json"
+    }
+  },
+  "required": [
+    "type",
+    "bottom_text",
+    "icon",
+    "actions"
+  ]
+}

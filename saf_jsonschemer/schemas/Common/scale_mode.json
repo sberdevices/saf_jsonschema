@@ -1,0 +1,17 @@
+{
+  "type": "string",
+  "description": "Режим растягивания контента внутри контейнера",
+  "enum": [
+    "scale_aspect_fill",
+    "scale_aspect_fit",
+    "center",
+    "top",
+    "bottom",
+    "left",
+    "right",
+    "top_left",
+    "top_right",
+    "bottom_left",
+    "bottom_right"
+  ]
+}

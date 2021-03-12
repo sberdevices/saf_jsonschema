@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "description": "Карточка с вертикальным списком ячеек.",
+  "allOf": [
+    {
+      "$ref": "../card_base.json"
+    },
+    {
+      "properties": {
+        "cells": {
+          "type": "array",
+          "items": {
+            "$ref": "cell_view.json"
+          }
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "list_card"
+          ]
+        }
+      },
+      "required": [
+        "type",
+        "cells"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "type": "object",
+  "description": "Горизонтальный упорядоченный блок содержащий icon и texts",
+  "definitions": {
+    "texts_view": {
+      "type": "object",
+      "description": "Вертикальный упорядоченный список содержащий title, subtitle, caption, https://www.figma.com/file/MQHBgPkW4dqXmI2549WioI/Dev?node-id=19%3A5641",
+      "properties": {
+        "title": {
+          "$ref": "../../Common/text_view.json"
+        },
+        "subtitle": {
+          "$ref": "../../Common/text_view.json"
+        },
+        "caption": {
+          "$ref": "../../Common/text_view.json"
+        },
+        "margins": {
+          "$ref": "../../Common/margins.json"
+        }
+      }
+    }
+  },
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "Тип левого элемента ячейки.",
+      "enum": [
+        "simple_left_view"
+      ]
+    },
+    "icon": {
+      "$ref": "../../Common/icon_view.json"
+    },
+    "texts": {
+      "$ref": "#/definitions/texts_view"
+    },
+    "icon_vertical_gravity": {
+      "$ref": "../../Common/vertical_gravity.json"
+    }
+  },
+  "required": [
+    "type"
+  ]
+}

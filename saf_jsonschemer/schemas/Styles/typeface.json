@@ -1,0 +1,22 @@
+{
+  "type": "string",
+  "description": "Стиль текста, см https://www.figma.com/file/D0AfmXWT5KBPiWFNg2IZoF/SmartX-Typeface?node-id=0%3A1",
+  "enum": [
+    "headline1",
+    "headline2",
+    "headline3",
+    "title1",
+    "title2",
+    "body1",
+    "body2",
+    "body3",
+    "text1",
+    "paragraphText1",
+    "paragraphText2",
+    "footnote1",
+    "footnote2",
+    "button1",
+    "button2",
+    "caption"
+  ]
+}

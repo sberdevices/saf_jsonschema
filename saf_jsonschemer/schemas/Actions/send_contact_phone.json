@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "description": "Действие, которое обозначает отправку номера телефона указанного контакта",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "Тип действия.",
+      "enum": [
+        "send_contact_phone"
+      ]
+    },
+    "send_contact_phone": {
+      "type": "integer",
+      "description": "Id контакта"
+    },
+    "template": {
+      "type": "string",
+      "description": "Может содержать подстроку [[placeholder]]. Клиент должен подставить в строку шаблона вместо [[placeholder]] номер телефона контакта имеющий id указаный в send_contact_phone"
+    }
+  },
+  "required": [
+    "type",
+    "send_contact_phone"
+  ]
+}

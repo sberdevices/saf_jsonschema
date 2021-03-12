@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "description": "Иконка",
+  "properties": {
+    "address": {
+      "$ref": "image_address.json"
+    },
+    "size": {
+      "$ref": "icon_size.json"
+    },
+    "margins": {
+      "$ref": "margins.json"
+    },
+    "tint_color": {
+      "$ref": "../Styles/color.json"
+    },
+    "actions": {
+      "$ref": "../Actions/actions.json"
+    }
+  },
+  "required": [
+    "address",
+    "size"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "type": "object",
+  "description": "Двумерная карточка (сетка)",
+  "allOf": [
+    {
+      "$ref": "../card_base.json"
+    },
+    {
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "grid_item.json"
+          },
+          "description": "Количество ячеек",
+          "min_items": 1
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "grid_card"
+          ]
+        },
+        "columns": {
+          "type": "integer",
+          "description": "Количество столбцов",
+          "default": 1
+        },
+        "item_width": {
+          "$ref": "../../Common/content_width.json",
+          "default": "small"
+        }
+      },
+      "required": [
+        "type",
+        "items"
+      ]
+    }
+  ]
+}

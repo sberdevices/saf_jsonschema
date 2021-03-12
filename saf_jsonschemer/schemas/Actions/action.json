@@ -1,0 +1,13 @@
+{
+  "oneOf": [
+    {
+      "$ref": "text.json"
+    },
+    {
+      "$ref": "deep_link.json"
+    },
+    {
+      "$ref": "send_contact_phone.json"
+    }
+  ]
+}

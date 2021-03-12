@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "description": "Передача текста.",
+  "properties": {
+    "text": {
+      "type": "string",
+      "description": "Текст, который отобразит ассистент."
+    },
+    "markdown": {
+      "type": "boolean",
+      "description": "Указывает, что текст содержит маркдаун-разметку, которую необходимо обработать.",
+      "default": false
+    },
+    "expand_policy": {
+      "type": "string",
+      "description": "Поведение шторки ассистента. Параметр актуален при работе с ассистентом на наших устройствах.",
+      "enum": ["auto_expand", "force_expand", "preserve_panel_state"],
+      "default": "auto_expand"
+    }
+  },
+  "required": ["text"]
+}

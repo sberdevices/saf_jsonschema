@@ -1,0 +1,45 @@
+{
+  "type": "object",
+  "description": "Вертикальный упорядоченный список, состоит из label, icon_and_value https://www.figma.com/file/MQHBgPkW4dqXmI2549WioI/Dev?node-id=227%3A3670",
+  "definitions": {
+    "icon_and_value_view": {
+      "type": "object",
+      "description": "Горизонтальный упорядоченный список содержит icon и value, https://www.figma.com/file/MQHBgPkW4dqXmI2549WioI/Dev?node-id=227%3A3670",
+      "properties": {
+        "icon": {
+          "$ref": "../../Common/icon_view.json"
+        },
+        "value": {
+          "$ref": "../../Common/text_view.json"
+        },
+        "margins": {
+          "$ref": "../../Common/margins.json"
+        },
+        "required": [
+          "value"
+        ]
+      }
+    }
+  },
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "Тип левого элемента ячейки.",
+      "enum": [
+        "fast_answer_left_view"
+      ]
+    },
+    "label": {
+      "$ref": "../../Common/text_view.json"
+    },
+    "icon_and_value": {
+      "$ref": "#/definitions/icon_and_value_view"
+    },
+    "margins": {
+      "$ref": "../../Common/margins.json"
+    }
+  },
+  "required": [
+    "type"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "oneOf": [
+    {
+      "$ref": "simple_left_view.json"
+    },
+    {
+      "$ref": "fast_answer_left_view.json"
+    }
+  ]
+}

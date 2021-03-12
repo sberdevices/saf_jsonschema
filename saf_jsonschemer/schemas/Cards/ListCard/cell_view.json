@@ -1,0 +1,22 @@
+{
+  "oneOf": [
+    {
+      "$ref": "left_right_cell_view.json"
+    },
+    {
+      "$ref": "text_cell_view.json"
+    },
+    {
+      "$ref": "button_cell_view.json"
+    },
+    {
+      "$ref": "image_cell_view.json"
+    },
+    {
+      "$ref": "details_cell_view.json"
+    },
+    {
+      "$ref": "weather_cell_view.json"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "oneOf": [
+    {
+      "$ref": "greeting_grid_item.json"
+    }
+  ]
+}

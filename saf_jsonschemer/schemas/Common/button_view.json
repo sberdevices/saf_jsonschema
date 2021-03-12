@@ -1,0 +1,44 @@
+{
+  "type": "object",
+  "description": "Кнопки для универсальных карточек",
+  "properties": {
+    "text": {
+      "type": "string",
+      "description": "Текст кнопки."
+    },
+    "typeface": {
+        "$ref": "../Styles/typeface.json",
+        "default": "button1"
+    },
+    "style": {
+      "type": "string",
+      "description": "Стиль кнопки.",
+      "enum": [
+          "default",
+          "transparent"
+      ],
+      "default": "default"
+    },
+    "type": {
+      "type": "string",
+      "description": "Тип кнопки.",
+      "enum": [
+          "accept",
+          "disabled",
+          "negative"
+      ],
+      "default": "accept"
+    },
+    "actions": {
+      "$ref": "../Actions/actions.json",
+      "minItems": 1
+    },
+    "margins": {
+        "$ref": "margins.json"
+    }
+  },
+  "required": [
+    "text",
+    "actions"
+  ]
+}

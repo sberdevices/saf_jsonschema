@@ -1,0 +1,17 @@
+{
+  "type": "object",
+  "description": "Размера контента в терминах сеток https://www.figma.com/file/L6AlpyUxFuumKEEbh4ADIh/🤖SD-Styles?node-id=26%3A17",
+  "properties": {
+    "width": {
+      "$ref": "content_width.json"
+    },
+    "aspect_ratio": {
+      "type": "number",
+      "description": "Отношение высоты контента к ширине"
+    }
+  },
+  "required": [
+    "width",
+    "aspect_ratio"
+  ]
+}

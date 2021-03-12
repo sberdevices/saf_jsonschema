@@ -1,0 +1,61 @@
+{
+  "type": "object",
+  "description": "Адрес графического ресурса, может быть задан в пространстве интернет или в локальном пространстве клиента, url имеет больший приоритет чем local",
+  "definitions": {
+    "url": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Тип ресурса.",
+          "enum": [
+            "url"
+          ]
+        },
+        "url": {
+          "type": "string",
+          "description": "Адрес картинки в интернете"
+        },
+        "hash": {
+          "type": "string",
+          "description": "Hash катинки в интернете(опционален)"
+        },
+        "placeholder": {
+          "description": "Заглушка, которую показываем, когда нет изображения или оно невалидно(опционален)",
+          "$ref": "local_image_identificator.json"
+        }
+      },
+      "required": [
+        "type",
+        "url"
+      ]
+    },
+    "local": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Тип ресурса.",
+          "enum": [
+            "local"
+          ]
+        },
+        "identificator": {
+          "$ref": "local_image_identificator.json"
+        }
+      },
+      "required": [
+        "type",
+        "identificator"
+      ]
+    }
+  },
+  "oneOf": [
+    {
+      "$ref": "#/definitions/url"
+    },
+    {
+      "$ref": "#/definitions/local"
+    }
+  ]
+}

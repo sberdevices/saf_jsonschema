@@ -1,0 +1,38 @@
+{
+  "type": "object",
+  "description": "Объект для описания отступов ui компонента.",
+  "definitions": {
+    "dimension": {
+      "type": "string",
+      "description": "Возможные размеры отступов",
+      "enum": [
+        "0x",
+        "1x",
+        "2x", 
+        "4x",  
+        "5x", 
+        "6x",
+        "8x",
+        "9x",
+        "10x",
+        "12x",
+        "16x"  
+      ],
+      "default": "0x"
+    }
+  },
+  "properties": {
+    "left": {
+      "$ref": "#/definitions/dimension"
+    },
+    "top": {
+      "$ref": "#/definitions/dimension"
+    },
+    "right": {
+      "$ref": "#/definitions/dimension"
+    },
+    "bottom": {
+      "$ref": "#/definitions/dimension"
+    }
+  }
+}

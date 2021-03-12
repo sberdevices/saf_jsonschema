@@ -1,0 +1,13 @@
+{
+  "description": "Свойства любой карточки.",
+  "properties": {
+    "paddings": {
+      "$ref": "../Common/paddings.json"
+    },
+    "can_be_disabled": {
+      "type": "boolean",
+      "description": "Свойство, говорящее о том, что карточка может стать визуально задизейблена.",
+      "default": false
+    }
+  }
+}

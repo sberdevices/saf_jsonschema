@@ -1,0 +1,54 @@
+{
+  "type": "object",
+  "description": "Вертикальный упорядоченный блок, содержащий опциональные detail и info_box https://www.figma.com/file/MQHBgPkW4dqXmI2549WioI/Dev?node-id=19%3A5686",
+  "definitions": {
+    "info_and_icon_view": {
+      "type": "object",
+      "description": "Горизнотальный упорядоченный блок, содержащий опциональные info и icon https://www.figma.com/file/MQHBgPkW4dqXmI2549WioI/Dev?node-id=19%3A5686",
+      "properties": {
+        "info": {
+          "$ref": "../../Common/text_view.json"
+        },
+        "icon": {
+          "$ref": "../../Common/icon_view.json"
+        },
+        "margins": {
+          "$ref": "../../Common/margins.json"
+        }
+      }
+    }
+  },
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "Тип правого элемента ячейки.",
+      "enum": [
+        "detail_right_view"
+      ]
+    },
+    "detail": {
+      "$ref": "../../Common/text_view.json"
+    },
+    "info_and_icon": {
+      "$ref": "#/definitions/info_and_icon_view"
+    },
+    "margins": {
+      "$ref": "../../Common/margins.json"
+    },
+    "vertical_gravity": {
+      "$ref": "../../Common/vertical_gravity.json"
+    },
+    "detail_position": {
+      "type": "string",
+      "description": "Расположение detail относительно info_and_icon",
+      "enum": [
+        "top",
+        "bottom"
+      ],
+      "default": "top"
+    }
+  },
+  "required": [
+    "type"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "type": "object",
+  "description": "Изображение из интернета. Ширина изображения будет соответствовать всей ширине карточке.",
+  "properties": {
+    "url": {
+      "type": "string",
+      "description": "Адрес изображения в интернет"
+    },
+    "hash": {
+      "type": "string",
+      "description": "Hash катинки в интернете(опционален)"
+    },
+    "placeholder": {
+      "description": "Заглушка, которую показываем, когда нет изображения или оно невалидно(опционален)",
+      "$ref": "local_image_identificator.json"
+    },
+    "scale_mode": {
+      "description": "Режим растягивания изображения",
+      "$ref": "scale_mode.json",
+      "default": "scale_aspect_fill"
+    },
+    "height": {
+      "type": "integer",
+      "description": "Высота контейнера под картинку, указывается в платформонезависимых поинтах",
+      "default": 192
+    },
+    "placeholder_color": {
+      "$ref": "../Styles/color.json",
+      "default": "liquid_20"
+    },
+    "actions": {
+      "$ref": "../Actions/actions.json"
+    },
+    "size": {
+      "description": "Размера изображения. Если есть size, то height игнорируется",
+      "$ref": "content_size.json"
+    }
+  },
+  "required": [
+    "url"
+  ]
+}

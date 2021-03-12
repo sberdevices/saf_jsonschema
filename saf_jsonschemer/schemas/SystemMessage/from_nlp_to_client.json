@@ -1,0 +1,94 @@
+{
+  "description": "Формат сообщения от nlp платформы к клиенту",
+  "type": "object",
+  "definitions": {
+    "card_element": {
+      "type": "object",
+      "description": "Объект, описывающий карточку",
+      "properties": {
+        "card": {
+          "$ref": "../Cards/card.json"
+        }
+      },
+      "required": ["card"]
+    },
+    "bubble_element": {
+      "type": "object",
+      "description": "Объект, описывающий текстовый бабл",
+      "properties": {
+        "bubble": {
+          "$ref": "../Bubble/bubble.json"
+        }
+      },
+      "required": ["bubble"]
+    },
+    "command_element": {
+      "type": "object",
+      "description": "Объект, описывающий команду",
+      "properties": {
+        "command": {
+          "type": "object"
+        }
+      },
+      "required": ["command"]
+    }
+  },
+  "properties": {
+    "app_info": {
+      "description": "Информация о приложении, которое ответило данным пакетом",
+      "type": "object"
+    },
+    "activate_app_info": {
+      "description": "Флаг, говорящий о том, нужно ли активировать апп, указанный в app_info, в случае если он сейчас не активен",
+      "type": "boolean",
+      "default": "true"
+    },
+    "auto_listening": {
+      "description": "Флаг, сообщающий о том, нужно ли включить запись голоса пользователя после проигрывания синтеза данного сообщения",
+      "type": "boolean",
+      "default": "false"
+    },
+    "asr_hints": {
+      "description": "Контекст с подсказками ASR. Данный объект будет передан в следующем исходящем запросе от клиента в платформу",
+      "type": "object"
+    },
+    "items": {
+      "description": "Список из карточек/баблов/команд, которые клиент должен отобразить/обработать",
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "#definitions/card_element"
+          },
+          {
+            "$ref": "#definitions/bubble_element"
+          },
+          {
+            "$ref": "#definitions/command_element"
+          }
+        ]
+      }
+    },
+    "emotion": {
+      "description": "Эмоция, которую нужно отобразить в лавашаре",
+      "type": "object"
+    },
+    "character": {
+      "description": "Объект, описывающий текущего выбранного персонажа",
+      "type": "object"
+    },
+    "suggestions": {
+      "description": "Объект для описания подсказок",
+      "type": "object",
+      "properties": {
+        "buttons": {
+          "description": "Список кнопок, которые клиент должен отобразить",
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      }
+    }
+  }
+}

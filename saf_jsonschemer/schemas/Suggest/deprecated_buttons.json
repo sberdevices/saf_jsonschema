@@ -1,0 +1,8 @@
+{
+	"type": "array",
+	"description": "Формат саджестов от уже написаных сценариев",
+	"items": {
+		"type": "array",
+		"items": "string"
+	}
+}

@@ -1,0 +1,10 @@
+{
+  "oneOf": [
+    {
+      "$ref": "disclosure_right_view.json"
+    },
+    {
+      "$ref": "detail_right_view.json"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "Тип ячейки",
+      "enum": [
+        "left_right_cell_view"
+      ]
+    },
+    "left": {
+      "$ref": "left_view.json"
+    },
+    "right": {
+      "$ref": "right_view.json"
+    },
+    "divider": {
+      "$ref": "divider_view.json"
+    },
+    "actions": {
+      "$ref": "../../Actions/actions.json"
+    },
+    "paddings": {
+      "$ref": "../../Common/paddings.json"
+    }
+  },
+  "required": [
+    "type",
+    "left"
+  ]
+}
