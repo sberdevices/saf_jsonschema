@@ -21,7 +21,6 @@ class ByNameMessageValidator(MessageValidator):
         return None
 
     def validate(self, message_name: str, data: dict):
-        print(f'\n\n\n\t- ByNameMessageValidator\n\n\n')
         schema_name = self._get_schema_by_message(message_name)
         if schema_name is not None:
             default_schemer.validate(data, schema_name)
@@ -29,5 +28,4 @@ class ByNameMessageValidator(MessageValidator):
 
 class ToClientMessageValidator(MessageValidator):
     def validate(self, message_name: str, data: dict):
-        print(f'\n\n\n\t- ToClientMessageValidator\n\n\n')
         default_schemer.validate(data, 'from_nlp_to_client')
