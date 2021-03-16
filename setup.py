@@ -1,7 +1,7 @@
 from setuptools import find_packages, setup
 
 setup(
-    name="saf_patterns",
+    name="saf_jsonschemer",
     author="SberDevices",
     author_email="developer@sberdevices.ru",
     description="SAF JSON Schemer — это плагин для SmartApp Framework, "

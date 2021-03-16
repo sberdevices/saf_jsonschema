@@ -66,4 +66,3 @@ class ToClientMessageValidator(MessageValidator):
         except jsonschema.ValidationError as ex:
             print_jsonschema_error(ex)
             return False
-
