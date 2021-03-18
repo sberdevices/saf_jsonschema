@@ -11,11 +11,7 @@ from saf_jsonschemer.schemer import JsonSchemer
 
 schema_root = Path(__file__).parent / 'schemas'
 
-schema_folders = (
-    'Actions', 'Bubble', 'Cards', 'Common',
-    'Styles', 'Suggest', 'SystemMessage',
-)
-default_schemer = JsonSchemer(schema_root, schema_folders)
+default_schemer = JsonSchemer(schema_root)
 
 
 def print_jsonschema_error(ex: jsonschema.ValidationError):
@@ -44,12 +40,18 @@ def print_jsonschema_error(ex: jsonschema.ValidationError):
 
 
 class ByNameMessageValidator(MessageValidator):
+    def __init__(self, name_to_schema=None):
+        self.name_to_schema = {} if name_to_schema is None else name_to_schema
+
     def _get_schema_by_message(self, message_name: str) -> Optional[str]:
-        if message_name in default_schemer.schema_values:
-            return message_name
+        if message_name in self.name_to_schema:
+            return self.name_to_schema[message_name]
+        # if message_name in default_schemer.schema_values:
+        #     return message_name
         return None
 
     def validate(self, message_name: str, data: dict):
+        print(f'\n\n\n\t- validate {message_name}\n{data}\n\n\n')
         schema_name = self._get_schema_by_message(message_name)
         if schema_name is not None:
             try:
@@ -57,12 +59,4 @@ class ByNameMessageValidator(MessageValidator):
             except jsonschema.ValidationError as ex:
                 print_jsonschema_error(ex)
                 return False
-
-
-class ToClientMessageValidator(MessageValidator):
-    def validate(self, message_name: str, data: dict):
-        try:
-            default_schemer.validate(data, 'from_nlp_to_client')
-        except jsonschema.ValidationError as ex:
-            print_jsonschema_error(ex)
-            return False
+        return True

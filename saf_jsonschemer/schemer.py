@@ -1,5 +1,6 @@
 import os
 import json
+import yaml
 from pathlib import Path
 import jsonschema
 
@@ -9,9 +10,12 @@ class JsonSchemer:
     Allows to use JSON-Schema repo with many linked schema files.
     """
 
-    def __init__(self, schema_root, schema_folders):
+    def __init__(self, schema_root, schema_folders=None):
         self.schema_uris, self.schema_values = dict(), dict()
-        self._load_schemas_repo(schema_root, schema_folders)
+        if schema_folders is None:
+            self._index_schemas_folder(schema_root)
+        else:
+            self._load_schemas_repo(schema_root, schema_folders)
 
     def _index_schemas_folder(self, schema_folder, schema_ext='.json'):
         """
@@ -56,25 +60,11 @@ class JsonSchemer:
         :param schema_root: an iterable of repo folder names
         :type schema_root: Iterable[str]
         """
-        schema_uris = dict()
-        schema_values = dict()
         schema_root = Path(os.path.abspath(schema_root))
         schema_paths = [schema_root / folder for folder in schema_folders]
 
         for path in schema_paths:
             self._index_schemas_folder(path)
-
-        return schema_uris, schema_values
-
-    def check_type(self, name):
-        """
-        For debug purposes.
-        :param name: schema name to check
-        :type name: str
-        """
-        print(f'Checking schema: "{name}"')
-        print('\tURI:', self.schema_uris[name])
-        print('\tContent:', self.schema_values[name])
 
     def validate(self, instance, instance_type=None):
         """
@@ -102,8 +92,9 @@ class JsonSchemer:
         schema = self.schema_values[instance_type]
         base_uri = f'{Path(self.schema_uris[instance_type]).parent}/'
 
+        # print('Schema name:', instance_type)
+        # print('Schema:', schema)
         # print('Base uri:', base_uri)
-        # print(f'Schema:', schema)
 
         # Resolver can be created only with referrer schema
         # So we need a unique resolver for each schema or data instance
