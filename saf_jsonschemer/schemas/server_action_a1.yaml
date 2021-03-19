@@ -1,0 +1,38 @@
+# https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=3469705993
+type: object
+description: SERVER_ACTION (A1)
+properties:
+  app_info:
+    "$ref": "_app_info.yaml"
+  device:
+    "$ref": "_device.yaml"
+  dubbing:
+    type: boolean
+  meta:
+    type: object
+    description: Информация с фронта о том что находится на экране пользователя + гео/время.
+  epkId:
+    type: string
+    description: ЕПК ID
+  token:
+    type: string
+    description: Токен поверхности
+  tokenType:
+    type: string
+    description: Тип токена, например, "SBERID"
+  csa_profile_id:
+    type: string
+    description: Тип токена, например, "SBERID"
+  server_action:
+    "$ref": "_server_action.yaml"
+  contentProvider:
+    type: object
+    description: Данные из различных источников, адресная книга ВК, данные для умного дома
+  smartBio:
+    type: object
+    description: Данные от биометрии
+  feature_launcher:
+    type: object
+    description: Коллекция, в которой передаются флаги для проведения экспериментов для сервисов и навыков Виртуального Ассистента
+
+required: [token, server_action, feature_launcher]

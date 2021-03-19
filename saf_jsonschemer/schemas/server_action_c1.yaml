@@ -1,0 +1,59 @@
+# https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=3472851068
+type: object
+description: SERVER_ACTION (C1)
+properties:
+  app_info:
+    "$ref": "_app_info.yaml"
+  device:
+    "$ref": "_device.yaml"
+  projectName:
+    description: Техническое имя проекта
+    type: string
+  applicationId:
+    description: Id апликейшена проекта из апп дир
+    type: string
+  appversionId:
+    description: Id версии проекта из апп дир
+    type: string
+  strategies:
+    description: Список стратегий для аппа
+    type: object
+  server_action:
+    "$ref": "_server_action.yaml"
+  meta:
+    type: object
+    description: Информация с фронта о том что находится на экране пользователя + гео/время.
+  token:
+    type: string
+    description: Токен поверхности
+  tokenType:
+    type: string
+    description: Тип токена, например, "SBERID"
+  smartBio:
+    type: object
+    description: Данные от биометрии
+  new_session:
+    type: boolean
+    description: По дефолту False. Признак того что это первый вход в навык. Те он не был запущен или был завершен ранее.
+  contentProvider:
+    type: object
+    description: Данные из различных источников, адресная книга ВК, данные для умного дома
+  client_profile:
+    type: object
+    description: Передается во внутренние каппы, если DP удалось получить профиль. Профиль обновляется не каждый запрос а N раз в день. Профиль - ЕПК
+  character:
+    "$ref": "_character.yaml"
+  epkId:
+    type: string
+    description: ЕПК ID
+  ufs_info:
+    type: object
+    description: Блок с куками ЕФС
+  legacyEribInfo:
+    type: object
+    description: Поддержка токена ЕРИБ. Проксируем результат из VPS
+  feature_launcher:
+    type: object
+    description: Коллекция, в которой передаются флаги для проведения экспериментов для сервисов и навыков Виртуального Ассистента
+
+required: [projectName, applicationId, appversionId, server_action, new_session]

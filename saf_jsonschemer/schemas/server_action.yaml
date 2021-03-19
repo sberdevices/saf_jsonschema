@@ -1,0 +1,4 @@
+type: object
+description: Стандартный SERVER_ACTION C1 для Смарт Аппов
+allOf:
+  - $ref: server_action_c1.yaml
