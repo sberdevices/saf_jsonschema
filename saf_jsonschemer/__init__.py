@@ -54,7 +54,6 @@ class ByNameMessageValidator(MessageValidator):
         return None
 
     def validate(self, message_name: str, payload: dict):
-        print(f'\n\n\n\t- validate {message_name}\n{payload}\n\n\n')
         schema_name = self._get_schema_by_message(message_name)
         if schema_name is not None:
             try:
