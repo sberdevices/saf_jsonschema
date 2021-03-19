@@ -1,0 +1,39 @@
+# https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=3472850970
+type: object
+description: Формат сообщения от nlp платформы к клиенту
+
+definitions:
+  additional_fields:
+    type: object
+    description: Поля, не описанные в from_nlp_to_client
+    properties:
+      pronounceText:
+        type: string
+        description: Текст который будет произнесен голосом
+      pronounceTextType:
+        type: string
+        description: Строка, указывающая, что в pronounceText есть разметка application/text или application/ssml
+      intent:
+        type: string
+        description: Апп может вернуть intent, если хочет чтобы следующее сообщение пришло с этим интентом
+      projectName:
+        type: string
+        description: Имя проекта, который отвечает
+      app_info:
+        "$ref": "_app_info.yaml"
+      trusted_hosts:
+        type: string
+        description: Строка которая проксируется от навыка (никто не помнит зачем)
+      smartBio:
+        type: object
+        description: Возвращаем smartBio пришедшее из впс
+      voice:
+        type: string
+        description: Голос персонажа - параметр voice из описания
+      userSettings:
+        type: object
+        description: Мапа для настройки пользовательских данных
+
+allOf:
+  - $ref: from_nlp_to_client/SystemMessage/from_nlp_to_client.json
+  - $ref: "#definitions/additional_fields"

@@ -1,0 +1,38 @@
+# https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=3472850981
+type: object
+description: Формат сообщения от Смарт Аппа к nlp платформе
+
+definitions:
+  additional_fields:
+    type: object
+    description: Поля, не описанные в from_nlp_to_client
+    properties:
+      pronounceText:
+        type: string
+        description: Текст который будет произнесен голосом
+      pronounceReadableText:
+        type: string
+        description: Текст без разметки для анафоры
+      pronounceTextType:
+        type: string
+        description: Строка, указывающая, что в pronounceText есть разметка application/text или application/ssml
+      finished:
+        type: boolean
+        description: Флаг при завершении работы скилла
+      historyData:
+        type: object
+        description: Информация от Аппа для сервиса хранения истории
+      device:
+        "$ref": "_device.yaml"
+      intent:
+        type: string
+        description: Апп может вернуть intent, если хочет чтобы следующее сообщение пришло с этим интентом
+      extracted_entities:
+        type: object
+        description: Данные от Axon в Intent Recognizer для разрешения анафоры
+      error_status:
+        "$ref": "_error_status.yaml"
+
+allOf:
+  - $ref: from_nlp_to_client/SystemMessage/from_nlp_to_client.json
+  - $ref: "#definitions/additional_fields"

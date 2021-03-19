@@ -1,0 +1,11 @@
+# https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=3371862297
+type: object
+description: Сквозной код ответа между компонентами
+properties:
+  component:
+    type: integer
+  code:
+    type: integer
+  description:
+    type: string
+required: [component, code]
