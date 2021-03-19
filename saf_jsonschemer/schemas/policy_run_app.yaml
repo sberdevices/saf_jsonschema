@@ -1,0 +1,7 @@
+# https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=3472851078
+type: object
+properties:
+  device:
+    "$ref": "_device.yaml"
+  server_action:
+    "$ref": "_server_action.yaml"

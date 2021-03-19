@@ -1,0 +1,18 @@
+type: object
+description: Текущий персонаж ассистента
+properties:
+  id:
+    type: string
+    description: Идентификатор персонажа
+  name:
+    type: string
+    description: Имя персонажа
+  gender:
+    type: string
+    description: Пол персонажа male | female
+  appeal:
+    type: string
+    description: Тип обращения official (официальное на Вы) | no_official (не официальное на ты)
+  voice:
+    type: string
+    description: alias голосовой модели в TTS

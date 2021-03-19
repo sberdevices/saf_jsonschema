@@ -1,0 +1,126 @@
+# https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=3472850952
+type: object
+description: payload of MESSAGE_TO_SKILL
+
+definitions:
+  annotation_inner:
+    type: object
+    description: Объект внутри annotations, описывает классы и их вероятности
+    properties:
+      classes:
+        type: array
+        items: string
+      probas:
+        type: array
+        items: number
+  annotations:
+    type: object
+    description: Общие характеристики сообщения пользователя
+    properties:
+      censor_data:
+        "$ref": "#definitions/annotation_inner"
+      text_sentiment:
+        "$ref": "#definitions/annotation_inner"
+      asr_sentiment:
+        "$ref": "#definitions/annotation_inner"
+  message:
+    type: object
+    description: Результат предобработки
+    properties:
+      original_text:
+        type: string
+      normalized_text:
+        type: string
+      asr_normalized_message:
+        type: string
+      domain_search:
+        type: object
+      entities:
+        type: object
+      tokenized_elements_list:
+        type: array
+        items: object
+
+properties:
+  token:
+    type: string
+    description: Токен поверхности
+  tokenType:
+    type: string
+    description: Тип токена
+  app_info:
+    "$ref": "_app_info.yaml"
+  intent:
+    type: string
+    description: Апп может вернуть intent, если хочет чтобы следующее сообщение пришло с этим интентом. Одним из возможных значений может быть "run_app", если IR определил, что это прямой запуск аппа.
+  original_intent:
+    type: string
+    description: Интент который вернул IR, совпадает с intent только при первичном выборе навыка
+  intent_meta:
+    type: object
+    description: Мета, которая пришла от IR
+  meta:
+    type: object
+    description: Информация с фронта о том что находится на экране пользователя + гео/время
+  is_fallback:
+    type: boolean
+    description: при вызове аксона дополнительно кладем информацию о том что он вызвался в режиме fallback
+  projectName:
+    type: string
+    description: Техническое имя проекта
+  applicationId:
+    type: string
+    description: Id апликейшена проекта из апп дир
+  appversionId:
+    type: string
+    description: Id версии проекта из апп дир
+  selected_item:
+    type: object
+    description: Описание названного пользователем элемента экрана в момент запрос. Получаем от IR.
+  asr:
+    type: object
+    description: Блок с гипотезами от ASR
+  epkId:
+    type: string
+    description: ЕПК ID
+  ufs_info:
+    type: object
+    description: Блок с куками для ЕФС
+  legacyEribInfo:
+    type: object
+    description: Поддержка токена ЕРИБ. Проксируем результат из VPS
+  device:
+    "$ref": "_device.yaml"
+  new_session:
+    type: boolean
+    default: false
+    description: Признак того что это первый вход в навык. Те он не был запущен или был завершен ранее
+  character:
+    "$ref": "_character.yaml"
+  client_profile:
+    type: object
+    description: Передается во внутренние аппы и в Axon, если DP удалось получить профиль. Профиль обновляется не каждый запрос а N раз в день. Профиль - ЕПК
+  strategies:
+    type: object
+    description: Список стратегий для аппа
+  smartBio:
+    type: object
+    description: Данные от биометрии
+  contentProvider:
+    type: object
+    description: Проброс payload для звонков вк
+  annotations:
+    "$ref": "#definitions/annotations"
+  message:
+    "$ref": "#definitions/message"
+  inner_entities:
+    type: object
+    description: Передается только в axon - cловарь от IR, содержащий сущности для kdqa и тд
+  domain_search:
+    type: object
+    description: Результат поиска сущностей по домену
+  feature_launcher:
+    type: object
+    description: Набор признаков попал ли пользователь в GF и процент плавной раскатки а также набор флагов для а/б тестов
+
+required: [token, app_info, projectName, applicationId, appversionId, device, character, message]

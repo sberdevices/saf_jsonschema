@@ -40,22 +40,25 @@ def print_jsonschema_error(ex: jsonschema.ValidationError):
 
 
 class ByNameMessageValidator(MessageValidator):
-    def __init__(self, name_to_schema=None):
+    def __init__(self, name_to_schema=None, direct_pass=True):
         self.name_to_schema = {} if name_to_schema is None else name_to_schema
+        self.direct_pass = direct_pass
 
     def _get_schema_by_message(self, message_name: str) -> Optional[str]:
+        message_name = message_name.lower()
         if message_name in self.name_to_schema:
             return self.name_to_schema[message_name]
-        # if message_name in default_schemer.schema_values:
-        #     return message_name
+        if self.direct_pass:
+            if message_name in default_schemer.schema_values:
+                return message_name
         return None
 
-    def validate(self, message_name: str, data: dict):
-        print(f'\n\n\n\t- validate {message_name}\n{data}\n\n\n')
+    def validate(self, message_name: str, payload: dict):
+        print(f'\n\n\n\t- validate {message_name}\n{payload}\n\n\n')
         schema_name = self._get_schema_by_message(message_name)
         if schema_name is not None:
             try:
-                default_schemer.validate(data, schema_name)
+                default_schemer.validate(payload, schema_name)
             except jsonschema.ValidationError as ex:
                 print_jsonschema_error(ex)
                 return False

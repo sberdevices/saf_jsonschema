@@ -1,0 +1,9 @@
+type: object
+description: Блок с доп информацией для запуска приложения. Изначально формируется бэком навыка. В DP приходит с фронта либо от бэка другого навыка. По дефолту {}
+properties:
+  action_id:
+    type: string
+  app_info:
+    "$ref": "_app_info.yaml"
+  parameters:
+    type: object

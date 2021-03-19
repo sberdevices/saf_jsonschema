@@ -1,0 +1,17 @@
+type: object
+description: Информация об устройстве клиента
+properties:
+  platformType:
+    type: string
+  platformVersion:
+    type: string
+  surface:
+    type: string
+  surfaceVersion:
+    type: string
+  features:
+    type: object
+  capabilities:
+    type: object
+  additionalInfo:
+    type: object

@@ -1,0 +1,15 @@
+type: object
+description: Данные из Апп Дир
+properties:
+  projectId:
+    type: string
+  systemName:
+    type: string
+  applicationId:
+    type: string
+  appversionId:
+    type: string
+  frontendEndpoint:
+    type: string
+  frontendType:
+    type: string

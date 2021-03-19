@@ -17,14 +17,12 @@ class JsonSchemer:
         else:
             self._load_schemas_repo(schema_root, schema_folders)
 
-    def _index_schemas_folder(self, schema_folder, schema_ext='.json'):
+    def _index_schemas_folder(self, schema_folder):
         """
         Add local schema instances from some folder.
 
         :param schema_folder: path to schema repo
         :type schema_folder: Path
-        :param schema_ext: extension of JSON-schema files
-        :type schema_ext: str
 
         Arguments:
             schema_uris (Dict[str, str]): a map to save schema path by its name
@@ -35,12 +33,17 @@ class JsonSchemer:
         # print(f'{schema_folder}:')
         for dir, _, files in os.walk(schema_folder):
             for file in files:
-                if file.endswith(schema_ext):
-                    schema_path = Path(dir) / Path(file)
+                schema_doc = None
+                schema_path = Path(dir) / Path(file)
+                if file.endswith('.json'):
                     with open(schema_path) as schema_file:
                         schema_doc = json.load(schema_file)
+                if file.endswith('.yaml'):
+                    with open(schema_path) as schema_file:
+                        schema_doc = yaml.load(schema_file)
+                if schema_doc is not None:
                     key = f'/{schema_path}'
-                    name = schema_path.name.replace(schema_ext, '')
+                    name = schema_path.stem
                     if name in self.schema_uris:
                         raise ValueError(
                             f'Double name {name}'
