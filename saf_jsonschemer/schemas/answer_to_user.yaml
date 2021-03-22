@@ -1,4 +1,4 @@
 type: object
 description: Стандартный ANSWER_TO_USER A2 для Смарт Аппов
 allOf:
-  - $ref: answer_to_user_a2.yaml
+  - $ref: answer_to_user_c2.yaml
