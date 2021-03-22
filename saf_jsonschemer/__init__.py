@@ -23,13 +23,13 @@ def print_jsonschema_error(ex: jsonschema.ValidationError, validator_name: Optio
     }
     if ex.validator == "type":
         params["required_field_type"] = ex.validator_value
-        params["required_field"] = ex.path[0]
+        params["required_field"] = ".".join(ex.path)
         msg = (
             "Payload validation error: Expected '%(required_field)s'"
             " of type '%(required_field_type)s'"
         )
     elif ex.validator == "required":
-        params["required_field"] = ex.validator_value
+        params["required_field"] = ".".join([*ex.path, *ex.validator_value])
         msg = (
             "Payload validation error: Required field "
             "'%(required_field)s' is missing"
