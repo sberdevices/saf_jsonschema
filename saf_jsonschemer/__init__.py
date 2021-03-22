@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Dict
 from pathlib import Path
 
 import jsonschema
@@ -14,7 +14,7 @@ schema_root = Path(__file__).parent / 'schemas'
 default_schemer = JsonSchemer(schema_root)
 
 
-def print_jsonschema_error(ex: jsonschema.ValidationError):
+def print_jsonschema_error(ex: jsonschema.ValidationError, validator_name: Optional[str] = None):
     """
     In consistence with SmartAppFromMessage.print_validation_error
     """
@@ -36,11 +36,14 @@ def print_jsonschema_error(ex: jsonschema.ValidationError):
         )
     else:
         msg = f"Message validation error: Format is wrong: {ex.message}"
+    if validator_name is not None:
+        msg += f" by validator {validator_name}"
     log(msg, params=params, level="ERROR")
 
 
 class ByNameMessageValidator(MessageValidator):
-    def __init__(self, name_to_schema=None, direct_pass=True):
+    def __init__(self, name: str, name_to_schema: Optional[Dict[str, str]] = None, direct_pass: bool = True):
+        self.name = name
         self.name_to_schema = {} if name_to_schema is None else name_to_schema
         self.direct_pass = direct_pass
 
@@ -59,6 +62,6 @@ class ByNameMessageValidator(MessageValidator):
             try:
                 default_schemer.validate(payload, schema_name)
             except jsonschema.ValidationError as ex:
-                print_jsonschema_error(ex)
+                print_jsonschema_error(ex, self.name)
                 return False
         return True
