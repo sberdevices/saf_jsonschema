@@ -7,11 +7,11 @@ from core.message.msg_validator import MessageValidator
 import core.logging.logger_constants as log_const
 from core.logging.logger_utils import log
 
-from saf_jsonschema.schemer import JsonSchemer
+from saf_jsonschema.resolver import SchemaStaticResolver
 
 schema_root = Path(__file__).parent / 'schemas'
 
-default_schemer = JsonSchemer(schema_root)
+default_static_resolver = SchemaStaticResolver(schema_root)
 
 
 def print_jsonschema_error(ex: jsonschema.ValidationError, validator_name: Optional[str] = None):
@@ -42,17 +42,26 @@ def print_jsonschema_error(ex: jsonschema.ValidationError, validator_name: Optio
 
 
 class ByNameMessageValidator(MessageValidator):
-    def __init__(self, name: str, name_to_schema: Optional[Dict[str, str]] = None, direct_pass: bool = True):
+    """
+    Allows to validate SmartAppFromMessage & SmartAppToMessage with JSON-Schema files.
+    Uses pre-defined schemas by default, but the behaviour can be easily changed with
+    constructor settings and/or overriding the _get_schema_by_message.
+    """
+    def __init__(
+            self, name: str, name_to_schema: Optional[Dict[str, str]] = None, direct_pass: bool = True,
+            static_resolver: Optional[SchemaStaticResolver] = None,
+    ):
         self.name = name
         self.name_to_schema = {} if name_to_schema is None else name_to_schema
         self.direct_pass = direct_pass
+        self.static_resolver = default_static_resolver if static_resolver is None else static_resolver
 
     def _get_schema_by_message(self, message_name: str) -> Optional[str]:
         message_name = message_name.lower()
         if message_name in self.name_to_schema:
             return self.name_to_schema[message_name]
         if self.direct_pass:
-            if message_name in default_schemer.schema_values:
+            if message_name in default_static_resolver.schema_values:
                 return message_name
         return None
 
@@ -60,7 +69,7 @@ class ByNameMessageValidator(MessageValidator):
         schema_name = self._get_schema_by_message(message_name)
         if schema_name is not None:
             try:
-                default_schemer.validate(payload, schema_name)
+                default_static_resolver.validate(payload, schema_name)
             except jsonschema.ValidationError as ex:
                 print_jsonschema_error(ex, self.name)
                 return False
