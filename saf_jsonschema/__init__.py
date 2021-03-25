@@ -7,7 +7,7 @@ from core.message.msg_validator import MessageValidator
 import core.logging.logger_constants as log_const
 from core.logging.logger_utils import log
 
-from saf_jsonschemer.schemer import JsonSchemer
+from saf_jsonschema.schemer import JsonSchemer
 
 schema_root = Path(__file__).parent / 'schemas'
 

@@ -7,7 +7,8 @@ import jsonschema
 
 class JsonSchemer:
     """
-    Allows to use JSON-Schema repo with many linked schema files.
+    Allows to use JSON-Schema repo with many cross-linked schema files.
+    jsonschema.RefResolver is referrer-dependent, while this class isn't.
     """
 
     def __init__(self, schema_root, schema_folders=None):
