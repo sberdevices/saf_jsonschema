@@ -9,6 +9,12 @@ from core.logging.logger_utils import log
 
 from saf_jsonschema.resolver import SchemaStaticResolver
 
+__all__ = [
+    'default_static_resolver',
+    'print_jsonschema_error',
+    'ByNameMessageValidator',
+]
+
 schema_root = Path(__file__).parent / 'schemas'
 
 default_static_resolver = SchemaStaticResolver(schema_root)
